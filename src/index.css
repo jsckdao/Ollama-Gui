@@ -72,3 +72,16 @@ body {
   padding: 0px;
 }
 
+.me {
+  background-color: rgb(192, 243, 236);
+}
+
+.sidebar {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .sidebar {
+    display: flex;
+  }
+}

@@ -4,11 +4,11 @@ import { ICoreType } from './types';
 const instance = new SimpleCore<ICoreType>(
   {
     conversations: {
-      session: { chatHistory: [], ctx: [], model: 'llama2', name: 'Session' },
+      session: { chatHistory: [], ctx: [], model: 'codellama', name: 'Session' },
     },
     current_conversation: 'session',
-    model: 'llama2',
-    localAPI: 'http://127.0.0.1:11435',
+    model: 'llama2-chinese',
+    localAPI: '/api',
     server_connected: false,
     installed_models: [],
     visited: false,

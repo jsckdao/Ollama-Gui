@@ -21,10 +21,10 @@ export const ConversationBlock: React.FC<IConversationBlockProps> = (p) => {
             }`}
           >
             {item.who === 'me' && (
-              <p className="mr-2 mt-2.5 text-neutral-400">You</p>
+              <p className="mr-2 mt-2.5 text-neutral-400"></p>
             )}
             <div
-              className={`right-0 flex flex-col mb-10 bg-zinc-100 dark:bg-zinc-900 border-solid border-neutral-200 dark:border-neutral-800  border rounded-xl p-2 w-[80%]`}
+              className={`right-0 flex flex-col mb-10 bg-zinc-100 dark:bg-zinc-900 border-solid border-neutral-200 dark:border-neutral-800  border rounded-xl p-2 w-[80%] ${item.who === 'me' ? 'me': 'ai'}`}
             >
               {item.txt?.map((txtItem, txtIndex) => {
                 if (txtItem.type === 'text') {
@@ -61,7 +61,7 @@ export const ConversationBlock: React.FC<IConversationBlockProps> = (p) => {
               </p>
             </div>
             {item.who === 'ollama' && (
-              <p className="ml-2 mt-2.5 text-neutral-400">Ollama</p>
+              <p className="ml-2 mt-2.5 text-neutral-400">AI</p>
             )}
           </div>
         )
@@ -69,7 +69,7 @@ export const ConversationBlock: React.FC<IConversationBlockProps> = (p) => {
       {p.conversations[p.currentConversation].chatHistory?.length === 0 &&
         !p.loading && (
           <p className="text-neutral-400 dark:text-neutral-600 text-center mt-10">
-            No message
+            没有消息
           </p>
         )}
     </>

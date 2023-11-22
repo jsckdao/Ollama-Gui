@@ -47,6 +47,7 @@ const HomePage: React.FC = () => {
 	const [txt, setTxt] = useState('');
 	const [responseTime, setResponseTime] = useState(0);
 	const [isShifted, setIsShifted] = useState(false);
+	const [isComposition, setIsComposition] = useState(false);
 
 	const removeConv = useCallback(() => {
 		setShowChatClearDialog(true);
@@ -200,14 +201,14 @@ const HomePage: React.FC = () => {
 		<div className="flex flex-row h-full">
 			<Sidebar loading={loading} />
 			<div className="dark:bg-black h-full w-full flex flex-col justify-center items-center">
-				{showIntroCard && (
+				{/* {showIntroCard && (
 					<IntroCard
 						onClose={(e) => {
 							if (e) core.visited.set(true);
 							setShowIntroCard(false);
 						}}
 					/>
-				)}
+				)} */}
 				{showChatClearDialog && (
 					<ConfirmChatClear
 						onClose={(e) => {
@@ -227,29 +228,15 @@ const HomePage: React.FC = () => {
 									className="bg-green-200 hover:bg-green-200 text-green-700"
 									variant="secondary"
 								>
-									Connected
+									已连接
 								</Badge>
 							</div>
 						)}
 
-						<div>
-							<Button
-								variant="secondary"
-								disabled={txt === '' || !ollamaConnected || loading}
-								onClick={() => submitPrompt()}
-								className="flex-shrink-0 ml-2"
-							>
-								{loading && (
-									<ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
-								)}
-								Submit
-							</Button>
-						</div>
-
 						<div className="flex flex-row  items-center">
 							<div className="ml-2 flex flex-row">
 								<p className="font-medium text-black dark:text-white">
-									Time taken:
+									时间消耗:
 								</p>
 								<p className="ml-1 text-neutral-500 ">{responseTime / 1000}s</p>
 							</div>
@@ -270,35 +257,10 @@ const HomePage: React.FC = () => {
 								</TooltipContent>
 							</Tooltip>
 
-							<SelectModel loading={loading} />
+							{/* <SelectModel loading={loading} />
 							<SideInfoSheet loading={loading} />
-							<ModeToggle />
+							<ModeToggle /> */}
 						</div>
-					</div>
-					<div className="flex flex-row w-full p-4 ">
-						<Textarea
-							ref={promptRef}
-							autoFocus
-							disabled={!ollamaConnected || loading}
-							placeholder="Prompt"
-							value={txt}
-							onChange={(e) => setTxt(e.currentTarget.value)}
-							className="dark:bg-black dark:text-zinc-300 p-1 px-2 max-h-[300px] flex-grow flex border dark:border-neutral-800"
-							onKeyUp={(e) => {
-								if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
-									setIsShifted(false);
-								}
-							}}
-							onKeyDown={(e) => {
-								if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
-									setIsShifted(true);
-								}
-
-								if (e.key === 'Enter' && !isShifted) {
-									submitPrompt();
-								}
-							}}
-						/>
 					</div>
 				</div>
 
@@ -312,6 +274,55 @@ const HomePage: React.FC = () => {
 						{loading && (
 							<Skeleton className="w-full h-[20px] rounded-full mt-2" />
 						)}
+					</div>
+				</div>
+
+				<div className="flex flex-col w-full pb-[5px] mt-2">
+					<div className="flex flex-row w-full p-4" style={{ alignItems: 'center' }}>
+						<Textarea
+							ref={promptRef}
+							autoFocus
+							disabled={!ollamaConnected || loading}
+							placeholder="请输入..."
+							value={txt}
+							onChange={(e) => setTxt(e.currentTarget.value)}
+							className="dark:bg-black dark:text-zinc-300 p-1 px-2 max-h-[300px] flex-grow flex border dark:border-neutral-800"
+							onCompositionStart={() => {
+								setIsComposition(true);
+							}}
+							onCompositionEnd={() => {
+								setIsComposition(false);
+							}}
+							onKeyUp={(e) => {
+
+								if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
+									setIsShifted(false);
+								}
+							}}
+							onKeyDown={(e) => {
+								if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') {
+									setIsShifted(true);
+								}
+
+								if (e.key === 'Enter' && !isShifted && !isComposition) {
+									submitPrompt();
+								}
+							}}
+						/>
+						<div>
+							<Button
+								variant="secondary"
+								disabled={txt === '' || !ollamaConnected || loading}
+								onClick={() => submitPrompt()}
+								style={{ width: '4rem' }}
+								className="flex-shrink-0 ml-2"
+							>
+								{loading ? (
+									<ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+								) : '发送'}
+								
+							</Button>
+						</div>
 					</div>
 				</div>
 			</div>
