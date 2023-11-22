@@ -1,6 +1,7 @@
 export type ModelTypes =
   | 'llama2'
   | 'llama2-chinese'
+  | 'llama2-chinese:13b-chat-q4_0'
   | 'llama2:13b'
   | 'llama2:70b'
   | 'llama2:uncensored'

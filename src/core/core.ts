@@ -7,7 +7,7 @@ const instance = new SimpleCore<ICoreType>(
       session: { chatHistory: [], ctx: [], model: 'codellama', name: 'Session' },
     },
     current_conversation: 'session',
-    model: 'llama2-chinese',
+    model: 'llama2-chinese:13b-chat-q4_0',
     localAPI: '/api',
     server_connected: false,
     installed_models: [],

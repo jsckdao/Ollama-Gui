@@ -19,7 +19,7 @@ import { UpdateModelsAvailability, checkIsRunningUpdate } from '@/app/helper';
 import { ConfirmChatClear } from '@/app/parts/ConfirmChatClear';
 import { ConversationBlock } from '@/app/parts/ConversationBlock';
 // import { IntroCard } from '@/app/parts/IntroCard';
-// import { SelectModel } from '@/app/parts/SelectModel';
+import { SelectModel } from '@/app/parts/SelectModel';
 // import { SideInfoSheet } from '@/app/parts/SideInfoSheet';
 import { Sidebar } from '@/app/parts/Sidebar';
 import { ReloadIcon, TrashIcon } from '@radix-ui/react-icons';
@@ -257,7 +257,8 @@ const HomePage: React.FC = () => {
 								</TooltipContent>
 							</Tooltip>
 
-							{/* <SelectModel loading={loading} />
+							<SelectModel loading={loading} />
+							{/* 
 							<SideInfoSheet loading={loading} />
 							<ModeToggle /> */}
 						</div>
