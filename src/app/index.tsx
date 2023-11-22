@@ -1,4 +1,4 @@
-import { ModeToggle } from '@/components/mode-toggle';
+// import { ModeToggle } from '@/components/mode-toggle';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -18,9 +18,9 @@ import {
 import { UpdateModelsAvailability, checkIsRunningUpdate } from '@/app/helper';
 import { ConfirmChatClear } from '@/app/parts/ConfirmChatClear';
 import { ConversationBlock } from '@/app/parts/ConversationBlock';
-import { IntroCard } from '@/app/parts/IntroCard';
-import { SelectModel } from '@/app/parts/SelectModel';
-import { SideInfoSheet } from '@/app/parts/SideInfoSheet';
+// import { IntroCard } from '@/app/parts/IntroCard';
+// import { SelectModel } from '@/app/parts/SelectModel';
+// import { SideInfoSheet } from '@/app/parts/SideInfoSheet';
 import { Sidebar } from '@/app/parts/Sidebar';
 import { ReloadIcon, TrashIcon } from '@radix-ui/react-icons';
 import { useRef, useState, useCallback, useEffect } from 'react';
@@ -41,7 +41,7 @@ const HomePage: React.FC = () => {
 	const conversations = useSimple(core.conversations);
 	const currentConversation = useSimple(core.current_conversation);
 
-	const [showIntroCard, setShowIntroCard] = useState(false);
+	// const [showIntroCard, setShowIntroCard] = useState(false);
 	const [showChatClearDialog, setShowChatClearDialog] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [txt, setTxt] = useState('');
@@ -146,7 +146,7 @@ const HomePage: React.FC = () => {
 
 	const initPageLoad = () => {
 		if (visited === false) {
-			setShowIntroCard(true);
+			// setShowIntroCard(true);
 		} else {
 			UpdateModelsAvailability();
 		}
