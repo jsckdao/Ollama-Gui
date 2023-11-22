@@ -55,7 +55,6 @@ export const SelectModel: React.FC<ISelectConversationProps> = ({
       <Select
         disabled={loading}
         value={model}
-        
         onValueChange={(e) => {
           setShowWarning(true);
           core.model.set(e as ModelTypes);
@@ -63,7 +62,6 @@ export const SelectModel: React.FC<ISelectConversationProps> = ({
       >
         <SelectTrigger className="w-fit whitespace-nowrap dark:text-white">
           {/* <SelectValue placeholder="Select a Model" /> */}
-          模型
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>

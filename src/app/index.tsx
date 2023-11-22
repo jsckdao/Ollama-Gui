@@ -45,7 +45,7 @@ const HomePage: React.FC = () => {
 	const [showChatClearDialog, setShowChatClearDialog] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [txt, setTxt] = useState('');
-	const [responseTime, setResponseTime] = useState(0);
+	// const [responseTime, setResponseTime] = useState(0);
 	const [isShifted, setIsShifted] = useState(false);
 	const [isComposition, setIsComposition] = useState(false);
 
@@ -54,7 +54,7 @@ const HomePage: React.FC = () => {
 	}, []);
 
 	const submitPrompt = useCallback(async () => {
-		const startTime = Date.now();
+		// const startTime = Date.now();
 		try {
 			if (txt === '') return;
 			setLoading(true);
@@ -139,9 +139,9 @@ const HomePage: React.FC = () => {
 			}, 0);
 		}
 
-		const endTime = Date.now();
+		// const endTime = Date.now();
 
-		setResponseTime(endTime - startTime);
+		// setResponseTime(endTime - startTime);
 	}, [txt, chatRef, promptRef, model, conversations, currentConversation]);
 
 	const initPageLoad = () => {
@@ -234,12 +234,12 @@ const HomePage: React.FC = () => {
 						)}
 
 						<div className="flex flex-row  items-center">
-							<div className="ml-2 flex flex-row">
+							{/* <div className="ml-2 flex flex-row">
 								<p className="font-medium text-black dark:text-white">
 									时间消耗:
 								</p>
 								<p className="ml-1 text-neutral-500 ">{responseTime / 1000}s</p>
-							</div>
+							</div> */}
 
 							<Tooltip>
 								<TooltipTrigger className="">
